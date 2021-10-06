@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand" style="background-color: red;"></div>
+        <div class="hand min-hand" style="background: grey;"></div>
+        <div class="hand second-hand" style="background: coral;"></div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width: 50%;
+      height: 6px;
+      background: black;
+      position: absolute;
+      top: 50%;
+      
+      /* 변형을 주는 기준점 선택 / transform 과 같이 사용하게 됨
+        (transform - 요소에 회전, 크기조절, 기울이기, 이동 효과 넣음)
+        옵션으로 px, center, top, 비율 등을 사용할 수 있음
+
+        참고 : https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin */
+      transform-origin: 100%;
+
+      /* CSS 속성을 변경할때 애니메이션 속도를 조절하는 방법을 제공
+        
+        참고 : https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+              https://developer.mozilla.org/ko/docs/Web/CSS/transition
+         */
+      transition: all 1s;
+
+      /* 트랜지션 속성 중 하나
+      
+        참고 : https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function */
+      transition-timing-function: cubic-bezier(0, 0, 0, 0);
+    }
+
+  </style>
+
+  <script>
+    const now = new Date();                                       // 시간 정보를 가져다주는 클래스
+
+    const secondHand = document.querySelector('.second-hand');    // 문서 내에서 시,분,초 해당하는 셀렉터를 가져옴
+    const minuteHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
+
+    let seconds = now.getSeconds();                               // 페이지 열리면서 초 정보를 가져옴, let 선언 (변수 재선언 불가, 재할당 가능)
+
+    function setDate() {
+      seconds++;                          // 실행될때마다 1초씩 증가시킴
+      const minutes = now.getMinutes();   // 시,분 정보 가져옴
+      const hours = now.getHours();
+
+      const secondsDeg = (seconds / 60) * 360 + 90;                           // 시,분,초 각도 계산 (요소가 0도에 설정되면 가로로 누워져있어, 12시를 기준으로 하기 위해서는 +90을 시켜줘야함)
+      const minutesDeg = ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90;
+      const hoursDeg = ((hours / 12) * 360) + ((minutes/60)*30) + 90;
+
+      secondHand.style.transform = `rotate(${secondsDeg}deg)`;    // 셀럭터로 가져온 요소의 스타일 속성의 transform 속성 값을 변경 시켜줌 (내부에 변수를 넣기 위해서는 겉에 따옴표가 아닌 백팁을 사용해야함)
+      minuteHand.style.transform = `rotate(${minutesDeg}deg)`;
+      hourHand.style.transform = `rotate(${hoursDeg}deg)`;
+
+      // console.log(hours, minutes, seconds);        // 로그를 찍어서 테스트
+    }
+
+    setInterval(setDate, 1000);     // 일정 시간마다 파라미터로 넘어온 함수를 실행시킴 / 참고 : https://developer.mozilla.org/en-US/docs/Web/API/setInterval
+
+    setDate();    // 초기에 페이지가 로딩되면 처음 함수 호출해야함, 그렇지 않으면 setInterval 이 실행되기 전에는 아무 변화가 나타나지 않음 (페이지 들어가서 1초 동안 아무 움직임이 없게 됨)
+
+  </script>
+</body>
+</html>
