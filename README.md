@@ -1,8 +1,8 @@
 [[_TOC_]]
 
-# Front-end Study
+# 🧑🏻‍💻 Front-end Study
 
-## 개요
+## 📋 개요
 
 * **시작일**
 
@@ -54,24 +54,64 @@
 
 ---
 
-## 학습 과정
+## 📝 학습 과정
 
 ### JavaScript30 (webos)
 
 <details>
-    <summary>자세히보기</summary>
-    <ul>
-        <li><strong>학습 기간</strong> : 2021.10.04.(월) ~ </li>
-        <li><strong>사이트</strong> : <a href="https://javascript30.com/">https://javascript30.com/</a></li>
-        <li><strong>참고</strong> : 학습 내용에 관한 자세한 사항은 폴더 내 파일에 주석으로 기술하였음</li>
-    </ul>
-    <br>
-    <h5>
-        1주차
-    </h5>
-    <ol>
-        <li> Day2_CSS_JS_CLOCK (스터디 시간 내 학습)</li>
-        <li> Day4_ARRAY_CARDIO_1 (스터디 과제)</li>
-    </ol>
+  <summary>자세히보기</summary>
+  <ul>
+    <li><strong>학습 기간</strong> : 2021.10.04.(월) ~ </li>
+    <li><strong>사이트</strong> : <a href="https://javascript30.com/">https://javascript30.com/</a></li>
+    <li><strong>참고</strong> : 학습 내용에 관한 자세한 사항은 폴더 내 파일에 주석으로 기술하였음</li>
+  </ul>
+  <br>
+  <h4>
+    학습 일정
+  </h4>
+  <table>
+    <thead>
+      <tr>
+        <th>주차</th>
+        <th>학습단원</th>
+        <th>학습내용</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          1주차
+          <br>
+          2021.10.04.(월)
+        </th>
+        <td>
+          Day2_CSS_JS_CLOCK
+          <br>
+          Day4_ARRAY_CARDIO_1
+        </td>
+        <td>
+          setInterval() 활용한 현재 시간 불러와서 현재 시간을 알려주는 기능 구현
+          <br>
+          배열을 이용한 map, filter, reduce, sort 사용법 학습
+        </td>
+      </tr>
+    		<th>
+          2주차
+          <br>
+          2021.10.11.(월)
+      	</th>
+        <td>
+          Day7_Array_Cardio_2
+          <br>
+          Day16_Mouse_Move_Shadow
+      	</td>
+        <td>
+          배열을 이용한 some, every, find, index 사용법 학습
+          <br>
+          리스너를 추가하여 마우스의 움직임에 따라 글씨 효과를 나타내는 기능 구현
+      	</td>
+    	<tr>
+    	</tr>
+    </tbody>
+  </table>
 </details>
-
