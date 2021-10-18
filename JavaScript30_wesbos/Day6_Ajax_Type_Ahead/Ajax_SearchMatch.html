@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+// 응답받은 데이터들을 담을 배열
+const cities = [];
+
+// 위의 주소로 요청을 보내서 응답을 받아옴.
+// Ajax (Asynchronous JavaScript and XML: 빠르게 동작하는 동적인 웹페이지를 만들기 위한 개발 기법)
+// fetch로 요청 보내면, 프로미스 형태로 반환 받음, then 으로 그 다음 작업들 작성
+fetch(endpoint)
+  .then(blob => blob.json())              // 데이터를 json으로 변환
+  .then(data => cities.push(...data));    // 데이터들을 하나씩 cities 배열에다가 담음
+
+
+// 데이터가 있는 배열 내에 검색하는 문자와 일치하는게 있는 데이터를 찾아오는 함수
+function findMatches(wordToMatch, cities) {
+  return cities.filter(place => {
+    // 정규표현식, g(global)-문자열 내에서 모든게 일치하거나 처음에 일치하는것들 / i(ignoreCase)-문자열 대소문자 구분하지 않음
+    const regex = new RegExp(wordToMatch, "gi");
+    return place.city.match(regex) || place.state.match(regex);
+  });
+}
+
+
+// 입력창과 결과창의 selector 를 할당
+const searchInput = document.querySelector(".search");
+const suggestions = document.querySelector(".suggestions");
+
+// 숫자를 3자리수마다 컴마를 넣어주는 함수
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// 이벤트 리스너 발생시 실행되는 함수 (입력값이 변하면 호출됨)
+function displayMatches() {
+  const matchArray = findMatches(this.value, cities);   // 검색이 일치하는것들이 배열에 저장됨
+  const html = matchArray.map(place => {                // 결과들 하나하나에 함수 적용
+    const regex = new RegExp(this.value, "gi");
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+    
+    // html 태그로 만들어서 반환
+    return `
+      <li>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
+      </li>
+    `
+  }).join("");    // 뒤에 join 을 붙여야 하나의 텍스트로 반환하게 됨 / 붙이지 않으면 리스트 형식으로 나타남
+
+  // innerHTML - 선택한 태그 (suggestions) 자손들을 모두 제거하고 그 아래에 html 을 집어 넣는다.
+  suggestions.innerHTML = html;
+}
+
+// 값이 변하는거 감지 리스너 (실시간으로 반영되지 않음)
+// searchInput.addEventListener("change", displayMatches);
+// 키보드가 눌렀다가 떼지면 실행됨 (값의 변화에 따라 바로바로 발생됨)
+searchInput.addEventListener("keyup", displayMatches);
+
+</script>
+</body>
+</html>
