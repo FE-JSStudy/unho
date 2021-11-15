@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>👀👀👀Follow Along Nav</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Order Status</a></li>
+        <li><a href="">Tweets</a></li>
+        <li><a href="">Read Our History</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrapper">
+      <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
+      <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
+      <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
+      <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur eveniet sunt quam provident sapiente dicta neque quod.</p>
+      <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
+    </div>
+
+<script>
+  const triggers = document.querySelectorAll('a');        // a 태그들을 모두 선택
+  const highlight = document.createElement('span');       // 마우스를 올린 a 태그들 뒤에 나타나게할 배경을 위해 span 태그를 생성
+  highlight.classList.add('highlight');                   // span 태그의 class 에 'highlight' 추가
+  document.body.appendChild(highlight);                   // DOM body 에 span 태그 추가
+
+  function highlightLink() {                              // 마우스가 태그에 들어가면 실행
+    const linkCoords = this.getBoundingClientRect();      // 현재 a 태그의 위치 값을 가져옴
+    // console.log(linkCoords);  
+    const coords = {                                      
+      width: linkCoords.width,                            // 너비
+      height: linkCoords.height,                          // 높이
+      top: linkCoords.top + window.scrollY,               // 위에서부터 얼마나 떨어져있는지 (스크롤 하는 경우 값이 변형이 있어 스크롤로 이동된 거리 추가)
+      left: linkCoords.left + window.scrollX              // 왼쪽으로부터 얼마나 떨어져있는지 (스크롤 하는 경우 값이 변형이 있어 스크롤로 이동된 거리 추가)
+    };
+
+    highlight.style.width = `${coords.width}px`;          // 배경의 너비와 높이를 만들어줌
+    highlight.style.height = `${coords.height}px`;
+    highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;   // browser로 부터 얼마나 떨어져있는지 정해줌
+
+  }
+
+  triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));       // 모든 a 태그에 이벤트 리스너 추가 (마우스를 가져다 대면 함수 실행)
+
+</script>
+</body>
+</html>
+

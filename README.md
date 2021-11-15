@@ -172,6 +172,22 @@
           axios 와 fetch 장단점 비교 학습
       	</td>
     	</tr>
+      <tr>
+        <th>
+          7주차
+          <br>
+          2021.11.15.(월)
+      	</th>
+        <td>
+          Day22_Follow_Along_Links
+      	</td>
+        <td>
+          Tag에 마우스 오버시 태그에 스타일 변경
+          <br>
+          forEach 이용한 다수의 태그에 이벤트 리스너 등록법 학습
+      	</td>
+    	</tr>
     </tbody>
   </table>
 </details>
+
