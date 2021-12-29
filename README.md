@@ -1,13 +1,5 @@
 # 🧑🏻‍💻 Front-end Study
 
-- [🧑🏻‍💻 Front-end Study](#--------front-end-study)
-  * [📋 개요](#-----)
-  * [📝 학습 과정](#--------)
-    + [1. JavaScript30 (webos)](#1-javascript30--webos-)
-    + [2. Toy Project](#2-toy-project)
-      - [1) Clone Coding (Sky Scanner)](#1--clone-coding--sky-scanner-)
-      
-
 ## 📋 개요
 
 * **시작일**
