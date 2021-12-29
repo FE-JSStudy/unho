@@ -1,5 +1,13 @@
 # 🧑🏻‍💻 Front-end Study
 
+- [🧑🏻‍💻 Front-end Study](#--------front-end-study)
+  * [📋 개요](#-----)
+  * [📝 학습 과정](#--------)
+    + [1. JavaScript30 (webos)](#1-javascript30--webos-)
+    + [2. Toy Project](#2-toy-project)
+      - [1) Clone Coding (Sky Scanner)](#1--clone-coding--sky-scanner-)
+      
+
 ## 📋 개요
 
 * **시작일**
@@ -55,7 +63,7 @@
 
 ## 📝 학습 과정
 
-### JavaScript30 (webos)
+### 1. JavaScript30 (webos)
 
 <details>
   <summary>자세히보기</summary>
@@ -190,3 +198,102 @@
   </table>
 </details>
 
+<br>
+
+### 2. Toy Project
+
+#### 1) Clone Coding (Sky Scanner)
+
+<details>
+  <summary>자세히보기</summary>
+  <ul>
+    <li><strong>학습 기간</strong> : 2021.12.27.(월) ~ 2022.01.03.(월)</li>
+    <li><strong>사이트</strong> : <a href="https://www.skyscanner.co.kr/">https://www.skyscanner.co.kr/</a></li>
+    <li><strong>참고</strong> : 일자별 계획 및 진행 상황, 학습 내용 등을 기술하였</li>
+  </ul>
+  <br>
+  <h4>학습 및 사용 기술 스택</h4>
+  <ul>
+    <li>React</li>
+    <li>React-router</li>
+  </ul>
+  <br>
+  <h4>일정</h4>
+  <ol>
+    <li> 12.27 ~ 12.29 : React 및 React-router 학습</li>
+    <li> 12.30 ~ 12.31 : 기획 및 구상</li>
+    <li> 01.01 ~ 01.03 : 프로그래밍</li>
+  </ol>
+  <br>
+  <h4>기획</h4>
+    <ul>
+      <li>Dom Tree
+        <br>
+        <img src="./README.assets/dom_tree.png">
+      </li>
+    </ul>
+  <br>
+  <h4>일자별 진행 상황</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>일자</th>
+        <th>계획</th>
+        <th>완료</th>
+        <th>비고</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          12.27
+          <br>
+          1일차
+        </th>
+        <td>
+          React 공식문서 통한 기본 학습 진행
+        </td>
+        <td>
+          React 프로젝트 생성 및 주요 개념 학습
+          <br>
+          Component, Props, State, 조건부 렌더링, 이벤트 처리 등.. 학습
+        </td>
+        <td>
+          -
+        </td>
+      <tr>
+      <tr>
+        <th>
+          12.28
+          <br>
+          2일차
+        </th>
+        <td>
+          간단한 페이지 작성을 통한 연습
+        </td>
+        <td>
+          간단한 TodoList 작성 페이지 제작 통한 연습
+        </td>
+        <td>
+          -
+        </td>
+      </tr>
+      <tr>
+        <th>
+          12.29
+          <br>
+          3일차
+        </th>
+        <td>
+          react-router-dom 학습
+        </td>
+        <td>
+          router 사용한 페이지 전환을 위해 router 학습
+        </td>
+        <td>
+          -
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</details>
