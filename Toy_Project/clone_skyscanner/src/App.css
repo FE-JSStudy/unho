@@ -73,7 +73,7 @@
 
 
 /* content */
-.content--background {
+.content--background-flights {
   height: 550px;
 
   display: flex;
@@ -82,6 +82,32 @@
   align-items: center;
 
   background-image: url("./images/background_flights.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.content--background-hotels {
+  height: 550px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-image: url("./images/background_hotels.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.content--background-rentCars {
+  height: 550px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-image: url("./images/background_rentCars.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -143,7 +169,88 @@
 
 /* content--information */
 .content--information {
-  height: 400px;
+  height: 200px;
+  padding: 10px 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content--information__flights {
+  padding: 10px;
+  margin: 20px;
+
+  display: flex;
+  align-items: center;
+}
+
+.content--information__icon {
+  width: 60px;
+}
+
+.content--information__hotels {
+  width: 200px;
+  margin: 30px 20px;
+  padding: 27px 27px;
+
+  text-align: center;
+  font-weight: bold;
+
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+}
+
+.content--information__hotels:hover {
+  border: 1px solid #01685f;
+  cursor: pointer;
+}
+
+.content--information__rentCars {
+  width: 200px;
+  margin: 30px 20px;
+  padding: 27px 27px;
+
+  text-align: center;
+  font-weight: bold;
+
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 1100px) {
+  .content--information-flights {
+    width: 1100px;
+  }
+
+  .content--information-hotels {
+    width: 1100px;
+  }
+
+  .content--information-rentCars {
+    width: 1100px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .content--information-hotels {
+    display: flex;
+    flex-wrap: wrap;
+  }  
+}
+
+@media screen and (max-width: 760px) {
+  .content--information-flights {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .content--information-rentCars {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 /* footer */

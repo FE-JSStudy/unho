@@ -51,7 +51,7 @@ function ReserveTable(props) {
 }
 
 function Information(props) {
-  const info = {
+  const infos = {
     flights: [
       {id: 1, text: '1,000개 이상의 업체가 제공하는 옵션 중 최저가 항공권을 선택해 수수료 없이 예약하세요'},
       {id: 2, text: '여행 계획에 변동이 생기거나 여행이 취소되어도 불이익이 없도록 변경 가능한 항공권을 선택하세요'},
@@ -73,22 +73,19 @@ function Information(props) {
   }
 
   return (
-    <ComponentList page={props.type} info={info}></ComponentList>
+    <ComponentList page={props.type} infos={infos}></ComponentList>
   )
 }
 
 function Content(props) {
   return (
     <div>
-      <div className="content--background">
+      <div className={`content--background-${props.type}`}>
         <ReserveTitle type={props.type}></ReserveTitle>
         <ReserveTable type={props.type}></ReserveTable>
       </div>
       <div className='content--information'>
         <Information type={props.type}></Information>
-      </div>
-      <div>
-        특가
       </div>
     </div>
   );

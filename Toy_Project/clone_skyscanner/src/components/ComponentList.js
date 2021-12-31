@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import content_info_flights_1 from "../images/content_info_flights_1.svg"
+import content_info_flights_2 from "../images/content_info_flights_2.svg"
+import content_info_flights_3 from "../images/content_info_flights_3.svg"
+
 // header - pages change buttons
 function PageList(props) {
   let navigate = useNavigate();
@@ -24,8 +28,6 @@ function PageList(props) {
 
 // content - case flights reserve
 function ReserveFlights(props) {
-
-
   if (props.radioType === 'roundTrip') {
     return (
       <label htmlFor={props.radioType.en}>
@@ -55,7 +57,31 @@ function ReserveFlights(props) {
       </label>
     )
   }
+}
 
+// content - info cards
+function InfoCard(props) {
+  if (props.page === 'flights') {
+    const icons = [content_info_flights_1, content_info_flights_2, content_info_flights_3]
+    return (
+      <div className={`content--information__${props.page}`}>
+        <img src={icons[props.info.id-1]} className="content--information__icon"></img>
+        {props.info.text}
+      </div>
+    );
+  } else if (props.page === 'hotels') {
+    return (
+      <div className={`content--information__${props.page}`}>
+        {props.info.text}
+      </div>
+    );
+  } else if (props.page === 'rentCars') {
+    return (
+      <div className={`content--information__${props.page}`}>
+        {props.info.text}
+      </div>
+    );
+  }
 }
 
 
@@ -80,12 +106,24 @@ function ComponentList(props) {
     })
   
   // 예약창 아래 정보 화면
-  } else if (props.page === 'flights') {
-    
+  } else if (props.infos) {
+    if (props.page === 'flights') {
+      items = props.infos.flights.map(info => {
+        return <InfoCard key={info.id} page={props.page} info={info}></InfoCard>
+      })
+    } else if (props.page === 'hotels') {
+      items = props.infos.hotels.map(info => {
+        return <InfoCard key={info.id} page={props.page} info={info}></InfoCard>
+      })
+    } else if (props.page === 'rentCars') {
+      items = props.infos.rentCars.map(info => {
+        return <InfoCard key={info.id} page={props.page} info={info}></InfoCard>
+      })
+    }
   }
 
   return (
-    <div className="list-box">
+    <div className={`list-box content--information-${props.page}`}>
       {items}
     </div>
   );
