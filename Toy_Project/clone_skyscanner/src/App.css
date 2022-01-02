@@ -166,6 +166,24 @@
   cursor: pointer;
 }
 
+/* content--reserve-table__input */
+.content--reserve-table__input-list {
+  color: white;
+  display: flex;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.content--reserve-table__input-item {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.content--reserve-table__input-form {
+  height: 30px;
+}
+
 
 /* content--information */
 .content--information {
@@ -252,5 +270,3 @@
     flex-wrap: wrap;
   }
 }
-
-/* footer */

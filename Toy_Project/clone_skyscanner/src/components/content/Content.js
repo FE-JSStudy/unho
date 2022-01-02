@@ -28,19 +28,100 @@ function ReserveTable(props) {
     console.log(`Now Selected : ${event.target.value}`);
   }
 
+  const [inputValue, setInputValue] = useState({
+    departure: '',
+    destination: '',
+    startDate: '',
+    endDate: '',
+    location: '',
+    checkIn: '',
+    checkOut: '',
+    people: '',
+  });
+
+  function inputValueChange(event, type) {
+    event.preventDefault();
+    if (type === 'departure') {
+      setInputValue({
+        ...inputValue,
+        departure: event.target.value,
+      });
+    } else if (type === 'destination') {
+      setInputValue({
+        ...inputValue,
+        destination: event.target.value,
+      });
+    } else if (type === 'startDate') {
+      setInputValue({
+        ...inputValue,
+        startDate: event.target.value,
+      });
+    } else if (type === 'endDate') {
+      setInputValue({
+        ...inputValue,
+        endDate: event.target.value,
+      });
+    }    if (type === 'location') {
+      setInputValue({
+        ...inputValue,
+        location: event.target.value,
+      });
+    } else if (type === 'checkIn') {
+      setInputValue({
+        ...inputValue,
+        checkIn: event.target.value,
+      });
+    } else if (type === 'checkOut') {
+      setInputValue({
+        ...inputValue,
+        checkOut: event.target.value,
+      });
+    } else if (type === 'people') {
+      setInputValue({
+        ...inputValue,
+        people: event.target.value,
+      });
+    }
+  }
+
   function reserve(event) {
     event.preventDefault();
-    console.log('reserve submit clicked!');
+
+    if (props.type === 'flights') {
+      alert(
+        `페이지 : ${props.type}${'\n'}종류 : ${radioValue}${'\n'}출발지 : ${inputValue.departure}${'\n'}도착지 : ${inputValue.destination}${'\n'}출발일 : ${inputValue.startDate}${'\n'}도착일 : ${inputValue.endDate}`
+      );
+    } else if (props.type === 'hotels') {
+      alert(`페이지 : ${props.type}${'\n'}지역 : ${inputValue.location}${'\n'}체크인 : ${inputValue.checkIn}${'\n'}체크아웃 : ${inputValue.checkOut}${'\n'}투숙객 : ${inputValue.people}`);
+    } else if (props.type === 'rentCars') {
+      alert(`페이지 : ${props.type}${'\n'}지역 : ${inputValue.location}${'\n'}대여 날짜 : ${inputValue.startDate}${'\n'}반납 날짜 : ${inputValue.endDate}${'\n'}`);
+    }
+
+    setInputValue({
+      departure: '',
+      destination: '',
+      startDate: '',
+      endDate: '',
+      location: '',
+      checkIn: '',
+      checkOut: '',
+      people: '',
+    });
   }
 
   return (
     <div className="content--reserve-table">
       <form>
-        <div className="content--reserve-table__radio-list">
-          <ComponentList type="ReserveFlights" radioTypes={radioTypes} radioValue={radioValue} onChange={radioChange}></ComponentList>
-        </div>
-        <div>
-          중간 - 데이트타임
+        {props.type === 'flights'
+          ? (
+              <div className="content--reserve-table__radio-list">
+                <ComponentList type="ReserveFlights" radioTypes={radioTypes} radioValue={radioValue} onChange={radioChange}></ComponentList>
+              </div>
+            )
+          : null
+        }
+        <div className="content--reserve-table__input">
+          <ComponentList page={props.type} type="contentReserveInput" inputValue={inputValue} onChange={inputValueChange}></ComponentList>
         </div>
         <div className="content--reserve-table__submit">
           <button className="content--reserve-table__submit-btn" onClick={reserve}>검색하기 ➜</button>

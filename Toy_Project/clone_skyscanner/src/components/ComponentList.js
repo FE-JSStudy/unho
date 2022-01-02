@@ -59,6 +59,70 @@ function ReserveFlights(props) {
   }
 }
 
+// rserve-input
+function ReserveInput(props) {
+  if (props.page === 'flights') {
+    return (
+      <div className="content--reserve-table__input-list">
+        <div className="content--reserve-table__input-item">
+          <label>출발지</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.departure} onChange={props.onChange.bind(this, 'departure')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>도착지</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.destination} onChange={props.onChange.bind(this, 'destination')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>출발일</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.startDate} onChange={props.onChange.bind(this, 'startDate')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>도착일</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.endDate} onChange={props.onChange.bind(this, 'endDate')} ></input>
+        </div>
+      </div>
+    );
+  } else if (props.page === 'hotels') {
+    return (
+      <div className="content--reserve-table__input-list">
+        <div className="content--reserve-table__input-item">
+          <label>어디에 숙소를 잡고 싶으신가요?</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.location} onChange={props.onChange.bind(this, 'location')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>체크인</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.checkIn} onChange={props.onChange.bind(this, 'checkIn')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>체크아웃</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.checkOut} onChange={props.onChange.bind(this, 'checkOut')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>투숙객 및 객실</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.people} onChange={props.onChange.bind(this, 'people')} ></input>
+        </div>
+      </div>
+    );
+  } else if (props.page === 'rentCars') {
+    return (
+      <div className="content--reserve-table__input-list">
+        <div className="content--reserve-table__input-item">
+          <label>대여장소</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.location} onChange={props.onChange.bind(this, 'location')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>대여 날짜</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.startDate} onChange={props.onChange.bind(this, 'startDate')} ></input>
+        </div>
+        <div className="content--reserve-table__input-item">
+          <label>반납 날짜</label>
+          <input type="text" className="content--reserve-table__input-form" value={props.inputValue.endDate} onChange={props.onChange.bind(this, 'endDate')} ></input>
+        </div>
+      </div>
+    );
+  }
+}
+
 // content - info cards
 function InfoCard(props) {
   if (props.page === 'flights') {
@@ -104,6 +168,11 @@ function ComponentList(props) {
     items = props.radioTypes.map(radioType => {
       return <ReserveFlights key={radioType.en} radioType={radioType} radioValue={props.radioValue} onChange={props.onChange}></ReserveFlights>
     })
+
+  } else if (props.type === 'contentReserveInput') {
+    items = <ReserveInput page={props.page} inputValue={props.inputValue} onChange={(type, event) => {
+      props.onChange(event, type);
+    }}></ReserveInput>
   
   // 예약창 아래 정보 화면
   } else if (props.infos) {
